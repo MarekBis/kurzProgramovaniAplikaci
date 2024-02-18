@@ -29,10 +29,19 @@ if (array_key_exists("submit-kolecka", $_POST)) {
         }
 
         .ball {
-            width: 50px;
-            height: 50px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
-            margin: 2rem;
+            margin: 2rem 2rem 1rem 2rem;
+            border: 2px solid black;
+
+        }
+        .col{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin-bottom: 50px;
         }
     </style>
 </head>
@@ -48,7 +57,9 @@ if (array_key_exists("submit-kolecka", $_POST)) {
         <?php
         for ($i = 0; $i < $pocetKolecek; $i++) {
             $color = '#' . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)] . $rand[rand(0, 15)];
-            echo "<div class=ball style=background:$color> </div>";
+            echo "<div class='col'><div class=ball style=background:$color></div>
+            <input type='color' name='barva' value='$color'></div>";
+            
         }
         ?>
     </div>
