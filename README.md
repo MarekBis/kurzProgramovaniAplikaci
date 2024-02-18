@@ -1,0 +1,1 @@
+Vetsina kodu z kurzu
