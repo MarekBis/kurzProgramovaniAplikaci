@@ -29,8 +29,8 @@ if (array_key_exists("submit-kolecka", $_POST)) {
         }
 
         .ball {
-            width: 100px;
-            height: 100px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             margin: 2rem 2rem 1rem 2rem;
             border: 2px solid black;
