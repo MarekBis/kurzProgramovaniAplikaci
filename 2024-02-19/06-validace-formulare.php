@@ -49,7 +49,6 @@ if (array_key_exists("prihlasit-submit", $_POST)) {
 }
 
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
