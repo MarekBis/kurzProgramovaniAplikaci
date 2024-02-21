@@ -1,3 +1,11 @@
+<?php
+require_once "./data.php";
+$idStranky = "domu";
+if (array_key_exists("id-stranky", $_GET)) {
+    $idStranky = $_GET["id-stranky"];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="cs">
 
@@ -10,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-    <title>PrimaPenzion</title>
+    <title><?php echo $poleStranek[$idStranky]["titulek"]; ?></title>
 </head>
 
 <body>
@@ -31,36 +39,16 @@
 
                 </div>
             </div>
-            <a href="index.html" class="logo">Prima<br>Penzion</a>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Domu</a></li>
-                    <li><a href="kontakt.html">Kontakt</a></li>
-                    <li><a href="galerie.html">Galerie</a></li>
-                    <li><a href="rezervace.html">Rezervace</a></li>
-                </ul>
-            </nav>
+            <a href="?id-stranky=domu" class="logo">Prima<br>Penzion</a>
+            <?php require "./komponenty/navigace.php"; ?>
         </div>
-        <img src="img/primapenzion-main.jpg" alt="PrimaPenzion">
+        <img src="img/<?php echo $poleStranek[$idStranky]["obrazek"]; ?>" alt="PrimaPenzion">
     </header>
-
-
-
-
-
-
-
+    <?php require "./$idStranky.html"; ?>
     <footer>
         <div class="footerObsah">
-            <nav>
-                <ul>
-                    <li><a href="index.html">Domu</a></li>
-                    <li><a href="kontakt.html">Kontakt</a></li>
-                    <li><a href="galerie.html">Galerie</a></li>
-                    <li><a href="rezervace.html">Rezervace</a></li>
-                </ul>
-            </nav>
-            <a href="index.html" class="logo">Prima<br>Penzion</a>
+            <?php require "./komponenty/navigace.php"; ?>
+            <a href="?id-stranky=domu" class="logo">Prima<br>Penzion</a>
             <div class="pataInfo">
                 <p>
                     <i class="fa-regular fa-map"></i>
