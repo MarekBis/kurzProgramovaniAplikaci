@@ -1,0 +1,5 @@
+{
+    "require": {
+        "primakurzy/hello-php": "^1.2"
+    }
+}

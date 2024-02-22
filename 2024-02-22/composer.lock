@@ -1,0 +1,56 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "cc4ade03d2d9594e95af003ea0cdfea3",
+    "packages": [
+        {
+            "name": "primakurzy/hello-php",
+            "version": "v1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PrimaKurzy-cz/hello-php.git",
+                "reference": "5f65617532ce5282c216c169c3b0b8f7185250e0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PrimaKurzy-cz/hello-php/zipball/5f65617532ce5282c216c169c3b0b8f7185250e0",
+                "reference": "5f65617532ce5282c216c169c3b0b8f7185250e0",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/hello.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Josef Kyrian / PrimaKurzy.cz",
+                    "email": "josef.kyrian@primakurzy.cz"
+                }
+            ],
+            "description": "For Educational Purposes Only",
+            "support": {
+                "issues": "https://github.com/PrimaKurzy-cz/hello-php/issues",
+                "source": "https://github.com/PrimaKurzy-cz/hello-php/tree/v1.2"
+            },
+            "time": "2022-01-19T09:04:55+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.6.0"
+}
