@@ -1,5 +1,6 @@
 {
     "require": {
-        "primakurzy/hello-php": "^1.2"
+        "primakurzy/hello-php": "^1.2",
+        "fzaninotto/faker": "^1.5"
     }
 }
