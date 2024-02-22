@@ -1,0 +1,253 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    
+}
+body{
+    height: 100vh;
+    width: 100%;
+}
+.container{
+    margin: auto;
+    width: 80%;
+    text-align: center;
+}
+section .container{
+    width: 70%;
+}
+
+.headerLine{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0px;
+}
+a{
+    color:black;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+a,i{
+    transition: 0.3s ease-in-out;
+}
+
+.headerIcons{
+    font-size: 1.2rem;
+}
+h2{
+    font-size: 24px;
+    padding-bottom: 30px;
+}
+h1{
+    padding: 50px 0 68px;
+    font-size: 50px;
+    text-transform: uppercase;
+}
+
+.odkaz:hover{
+    color:red;
+    text-decoration: underline;
+}
+
+.fa-facebook:hover{
+    color: #1877F2;
+}
+
+.fa-instagram:hover{
+    color:#E4405F;
+}
+.fa-github:hover{
+    color:#2DBA4E;
+}
+
+.logo{
+
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 40px;
+}
+
+
+nav ul{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    text-transform: uppercase;
+    gap: 50px;
+    padding: 50px 0;
+
+}
+
+nav a:hover{
+    border-bottom: 2px solid #A57A5B;
+
+}
+nav a {
+    padding-bottom: 10px;
+}
+
+header img{
+    width: 100%;
+}
+
+/*Section*/
+.obsah{
+    padding-bottom: 120px;
+}
+.obsah h2{
+    color:#A57A5B;
+}
+
+
+footer .logo{
+    font-size: 20px;
+}
+.footerObsah{
+    text-align: center;
+    background-color:#EAEAEA ;
+}
+
+footer i{
+    margin-right: 10px;
+}
+
+.copyright{
+    text-align: center;
+    padding: 15px 0;
+}
+footer .headerIcons{
+    padding: 30px 0;
+    font-size:1.75rem;
+}
+footer a.logo{
+    margin-bottom: 36px;
+    display: inline-block;
+}
+span{
+    color:#B30000;
+    font-weight: 700;
+}
+
+p{
+    line-height: 1.6;
+}
+
+.kontakt .container{
+    width: 80%;
+}
+.kontakt{
+    padding: 100px ;
+}
+.kontaktSeda{
+    background-color: #EAEAEA;
+}
+
+.info{
+    text-align: left;
+}
+.info i{
+    width:25px;
+}
+
+.info{
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    padding: 0 30px 50px;
+
+}
+.platebniMetody i{
+    font-size:50px;
+}
+.platebniMetody{
+    padding-bottom: 30px;
+}
+.formBox form{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 70%;
+    margin: auto;
+}
+
+.formBox form input,.formBox form textarea {
+    width: 100%;
+    padding: 10px 5px;
+    margin: 3px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.kontakt textarea{
+    height: 130px;
+    resize: none;
+}
+
+.kontakt input[type=submit]{
+    width: 130px;
+    background-color:transparent;
+    text-transform: uppercase;
+    border: 2px solid #B30000;
+    color:#B30000;
+    font-weight: bold;
+    margin: auto;
+    cursor: pointer;
+}
+.kontakt input[type="submit"]:hover {
+    background: #B30000;
+    color: #fff;
+}
+.formBox{
+    padding-bottom:30px;
+}
+.bila{
+    background-color: white;
+    padding: 10px 0;
+}
+iframe{
+    width: 100%;
+}
+.kontaktSeda h2{
+    padding:30px 0;
+}
+img, iframe{
+    vertical-align: top;
+}
+
+.rezervace label{
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+.rezervace form{
+    gap:15px;
+}
+
+.fotky a{
+    width: 25%;
+    padding: 2.5px;
+}
+
+.container.foto{
+    width: 90%;
+    padding-bottom: 100px;
+}
+.container .fotky{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.fotky img{
+    width: 100%;
+}
+
+
+@media screen and (max-width:550px){
+    nav ul{
+        gap: 20px;
+    }
+}

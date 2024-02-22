@@ -26,6 +26,10 @@
     echo $faker->phoneNumber;
     echo "<br>";
     ?>
-    
+
+    <script src="./node_modules/colors/safe.js" type=></script>
+    <script>
+        console.log("Hello World");
+    </script>
 </body>
 </html>
