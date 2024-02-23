@@ -1,8 +1,12 @@
 <?php
 require_once "./data.php";
-$idStranky = "domu";
+   //vychozi id bude prvni polozka v poli
+   $idStranky = array_keys($poleStranek)[0];
 if (array_key_exists("id-stranky", $_GET)) {
     $idStranky = $_GET["id-stranky"];
+}
+if(!array_key_exists($idStranky,$poleStranek)){
+    $idStranky = "404";
 }
 ?>
 
@@ -18,7 +22,7 @@ if (array_key_exists("id-stranky", $_GET)) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-    <title><?php echo $poleStranek[$idStranky]["titulek"]; ?></title>
+    <title><?php echo $poleStranek[$idStranky]->titulek; ?></title>
 </head>
 
 <body>
@@ -42,7 +46,7 @@ if (array_key_exists("id-stranky", $_GET)) {
             <a href="?id-stranky=domu" class="logo">Prima<br>Penzion</a>
             <?php require "./komponenty/navigace.php"; ?>
         </div>
-        <img src="img/<?php echo $poleStranek[$idStranky]["obrazek"]; ?>" alt="PrimaPenzion">
+        <img src="img/<?php echo $poleStranek[$idStranky]->obrazek; ?>" alt="PrimaPenzion">
     </header>
     <?php require "./$idStranky.html"; ?>
     <footer>

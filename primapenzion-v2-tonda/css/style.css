@@ -1,0 +1,225 @@
+body, input, textarea {
+    font-family: 'Montserrat', sans-serif;
+}
+/*p, h1, h2, h3*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+section .container {
+    width: 70%;
+}
+p {
+    line-height: 1.6;
+}
+a {
+    color: #000;
+    text-decoration: none;
+}
+a, i, input {
+    transition: .3s ease-in-out;
+}
+h1 {
+    padding: 50px 0 68px;
+    font-size: 50px;
+    text-transform: uppercase;
+}
+h2 {
+    font-size: 24px;
+    padding-bottom: 30px;
+}
+img, iframe {
+    vertical-align: top;
+}
+.headerTop {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    align-items: center;
+}
+.socIkon {
+    font-size: 20px;
+}
+.odkaz:hover {
+    color: #B30000;
+    text-decoration: underline;
+}
+.fa-facebook:hover {
+    color: #1877F2;
+}
+.fa-instagram:hover {
+    color: #E4405F;
+}
+.fa-youtube:hover {
+    color: #CD201F;
+}
+.logo {
+    font-size: 40px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    text-transform: uppercase;
+    gap: 50px;
+    padding: 50px 0;
+}
+nav ul li a {
+    padding-bottom: 10px;
+}
+nav ul li a:hover {
+    border-bottom: 2px solid #B30000;
+}
+header img {
+    width: 100%;
+    height: auto;
+}
+/*Section*/
+.obsah {
+    padding-bottom: 120px;
+}
+.obsah h2 {
+    color: #A57A5B;
+}
+/*Footer*/
+.pata {
+    background: #EAEAEA;
+    text-align: center;
+    padding-bottom: 30px;
+}
+.pata .logo {
+    font-size: 20px;
+}
+.pata .socIkon {
+    font-size: 40px;
+}
+.pataInfo {
+    padding: 35px 0;
+}
+.pataInfo i,
+.kontaktBox i {
+    /*margin-right: 15px;*/
+    width: 35px;
+}
+.pataInfo span,
+.kontaktBox span {
+    font-weight: 700;
+    color: #B30000;
+}
+.copy {
+    padding: 15px 0;
+    text-align: center;
+    font-size: 14px;
+}
+/*kontakt*/
+.kontakt,
+.rezervace {
+    padding: 100px 0;
+}
+.kontaktGrey {
+    background: #EAEAEA;
+    padding: 0 30px 30px;
+}
+.kontaktFlex {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 50px;
+    text-align: left;
+}
+.karty p i {
+    font-size: 50px;
+}
+.kontakt iframe {
+    width: 100%;
+    margin: 10px 0;
+}
+.kontaktGrey h2 {
+    padding-top: 30px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 70%;
+    margin: auto;
+}
+form input,
+form textarea {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #B5B5B5;
+    border-radius: 5px;
+}
+form textarea {
+    height: 130px;
+}
+form input[type="submit"] {
+    border: 2px solid #B30000;
+    border-radius: 5px;
+    background: transparent;
+    color: #B30000;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: auto;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+form input[type="submit"]:hover {
+    background: #B30000;
+    color: #fff;
+}
+/*Rezervace*/
+form label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.rezervace form {
+    gap: 15px;
+    text-align: left;
+}
+/*galerie*/
+.galerie {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3px;
+}
+.galerie a{
+    width: 24%;
+}
+.galerie img {
+    width: 100%;
+    height: auto;
+}
+/*responsiv*/
+@media screen and (max-width: 850px) {
+    .kontaktFlex {
+            flex-direction: column;
+            gap: 30px;
+            text-align: center;
+        }
+}
+@media screen and (max-width: 550px) {
+    nav ul {
+            gap: 20px;
+        }
+}
+ @media screen and (max-width: 450px) {
+    nav ul {
+            flex-direction: column;       
+        }
+section .container {
+    width: 95%;
+}
+form {
+    width: 100%;
+}
