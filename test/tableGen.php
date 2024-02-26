@@ -1,13 +1,28 @@
 <?php
 session_start();
+
+
 if (array_key_exists("pocetKol", $_SESSION)) {
     //existuje
     $_SESSION["pocetKol"]++;
     $kolo = $_SESSION["pocetKol"];
-}else{
-    //cookina neexistuje
-    $_SESSION["pocetKol"]=0;
+} else {
+    //sess neexistuje
+    $_SESSION["pocetKol"] = 0;
     $kolo = $_SESSION["pocetKol"];
+    $_SESSION["row1col1"] = "";
+    $_SESSION["row1col2"] = "";
+    $_SESSION["row1col3"] = "";
+
+    $_SESSION["row2col1"] = "";
+    $_SESSION["row2col2"] = "";
+    $_SESSION["row2col3"] = "";
+
+    $_SESSION["row3col1"] = "";
+    $_SESSION["row3col2"] = "";
+    $_SESSION["row3col3"] = "";
+
+
 }
 
 echo "\$_GET <br>";
@@ -26,21 +41,25 @@ $znak2 = "O";
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tablegen</title>
     <style>
-        table,td{
+        table,
+        td {
             border: 4px solid black;
             border-collapse: collapse;
         }
-        td{
+
+        td {
 
             width: 100px;
             height: 100px;
         }
-        a{
+
+        a {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -49,34 +68,35 @@ $znak2 = "O";
             text-decoration: none;
             font-size: 2rem;
         }
-        a:hover{
+
+        a:hover {
             background-color: rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
+
 <body>
     <table>
         <?php
-    for ($col=1; $col <4 ; $col++) { 
-        echo "<tr>";
-        for ($row=1; $row < 4; $row++) { 
-            echo "<td id='row$row-col$col'><a href=?row$row-col$col>";
+        for ($col = 1; $col < 4; $col++) {
+            echo "<tr>";
+            for ($row = 1; $row < 4; $row++) {
+                echo "<td id='row$row-col$col'><a href=?row$row-col$col>";
 
-            if (array_key_exists("row$row-col$col",$_GET)){
-                if($kolo % 2 == 0 || $kolo ==0){
-                    echo $znak1;
-                    $_SESSION["row$row-col$col"] = $znak1;
-                }else{
-                    echo $znak2;
-                    $_SESSION["row$row-col$col"] = $znak2;
+                if (array_key_exists("row$row-col$col", $_GET)) {
+                    if ($kolo % 2 == 0 || $kolo == 0) {
+                        echo $_SESSION["row$row-col$col"] = $znak1;
+                    } else {
+                        echo $_SESSION["row$row-col$col"] = $znak2;
+                    }
                 }
+                echo "</a></td>";
             }
-            echo "</a></td>";
+            echo "</tr>";
         }
-        echo "</tr>";
-    }
-    ?>
+        ?>
     </table>
 
 </body>
+
 </html>
