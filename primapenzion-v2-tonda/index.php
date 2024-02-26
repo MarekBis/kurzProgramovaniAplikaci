@@ -1,6 +1,6 @@
 <?php
     require_once './data.php';
-
+    require_once "./vendor/autoload.php";
     //vychozi id bude prvni polozka v poli
     $idStranky = array_keys($poleStranek)[0];
 
@@ -61,7 +61,9 @@
 
     <!-- sem se bude pripojovat obsah -->
     <?php
-        require "./$idStranky.html";
+        $surovyObsah = file_get_contents("./$idStranky.html");
+        $zpracovanyObsah = primakurzy\Shortcode\Processor::process("./moje-shortcody", $surovyObsah);
+        echo $zpracovanyObsah;
     ?>
     <footer>
         <div class="pata">

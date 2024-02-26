@@ -1,5 +1,15 @@
 <?php
 session_start();
+if (array_key_exists("pocetKol", $_SESSION)) {
+    //existuje
+    $_SESSION["pocetKol"]++;
+    $kolo = $_SESSION["pocetKol"];
+}else{
+    //cookina neexistuje
+    $_SESSION["pocetKol"]=0;
+    $kolo = $_SESSION["pocetKol"];
+}
+
 echo "\$_GET <br>";
 var_dump($_GET);
 echo "\$_POST <br>";
@@ -11,7 +21,6 @@ var_dump($_COOKIE);
 
 $znak1 = "X";
 $znak2 = "O";
-
 
 ?>
 
@@ -37,6 +46,8 @@ $znak2 = "O";
             align-items: center;
             height: 100%;
             width: 100%;
+            text-decoration: none;
+            font-size: 2rem;
         }
         a:hover{
             background-color: rgba(0, 0, 0, 0.5);
@@ -52,22 +63,18 @@ $znak2 = "O";
             echo "<td id='row$row-col$col'><a href=?row$row-col$col>";
 
             if (array_key_exists("row$row-col$col",$_GET)){
-                if($tah % 2 == 0 || $tah ==0){
+                if($kolo % 2 == 0 || $kolo ==0){
                     echo $znak1;
-                    echo $tah+=1;
+                    $_SESSION["row$row-col$col"] = $znak1;
                 }else{
                     echo $znak2;
-                    echo $tah=4;
-                    
+                    $_SESSION["row$row-col$col"] = $znak2;
                 }
-            }else{
-                $tah=0;
             }
             echo "</a></td>";
         }
         echo "</tr>";
     }
-    var_dump($tah);
     ?>
     </table>
 
