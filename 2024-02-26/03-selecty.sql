@@ -41,3 +41,46 @@ SELECT * FROM zeme ORDER BY kontinent ASC;
 SELECT * FROM zeme ORDER BY kontinent DESC;
 
 SELECT * FROM zeme ORDER BY mena ASc, nazev_cesky DESC;
+
+--limit omezi pocet vysledku, ktere vypiseme
+--limit se pise vzdy az na konec prikazu
+--7 prvnich statu
+SELECT * FROM zeme LIMIT 7;
+--7 poslednich
+SELECT * FROM zeme ORDER BY nazev_cesky DESC LIMIT 7;
+--pokud u limitu uvedeme 2 cisla
+--kolik polozek se ma preskocit
+--kolik polozek vypsat
+SELECT * FROM zeme LIMIT 5,8;
+
+--group by nam seskupi stejne hodnoty dohormady
+SELECT COUNT(*),kontinent  FROM zeme GROUP BY kontinent;
+--alias
+SELECT COUNT(*)as pocet,kontinent  FROM zeme GROUP BY kontinent;
+
+--kdyz mate zgourpovany hodnoty, tak se misto WHERE pouziva HAVING
+--vypiseme kontinenty, ktere maji vice nez 30 statu
+SELECT COUNT(*) AS pocet, kontinent FROM zeme GROUP BY kontinent HAVING pocet > 30;
+--union spoji 2 vysledky dvou selectu dohromady
+--selecty musi byt na stejne tabulce se stejnimi atributy, jinak nelze vysledky spojit
+--vypsat 5 prvnich statu a 7 poslednich statu
+SELECT * FROM zeme LIMIT 5;
+SELECT * FROM zeme ORDER BY nazev_cesky DESC LIMIT 7;
+
+(SELECT * FROM zeme LIMIT 5) UNION (SELECT * FROM zeme ORDER BY nazev_cesky DESC LIMIT 7);
+
+SHOW TABLES;
+SELECT * FROM prezdivka;
+SELECT * FROM uzivatel;
+--kartezsky soucin vam nakombinuje vsechny radky prvni tbaulky se vsema radkama druhe tabulky
+SELECT * FROM prezdivka, uzivatel;
+--prechozi priklad neni moc uzitecny, k cemu je nam kombinace vsech hodnot
+SELECT * FROM prezdivka, uzivatel WHERE prezdivka.uzivatel_id=uzivatel.id;
+--join
+--toto je inner join, vypise jen hodnoty, ktere k sobe nasli partaka
+SELECT * FROM prezdivka JOIN uzivatel ON prezdivka.uzivatel_id = uzivatel.id;
+--left join vypise komplete celou levou tabulku a pak k tomu bude hledat hodnoty z druhe tabulky
+SELECT * FROM prezdivka LEFT JOIN uzivatel ON prezdivka.uzivatel_id = uzivatel.id;
+SELECT * FROM prezdivka RIGHT JOIN uzivatel ON prezdivka.uzivatel_id = uzivatel.id;
+--chceme vypsta vsechny prezdivky ktere k sobe nenasly partaka
+SELECT * FROM prezdivka LEFT JOIN uzivatel ON prezdivka.uzivatel_id = uzivatel.id WHERE uzivatel.id IS NULL;

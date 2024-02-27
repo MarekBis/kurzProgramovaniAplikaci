@@ -6,23 +6,24 @@ if (array_key_exists("pocetKol", $_SESSION)) {
     //existuje
     $_SESSION["pocetKol"]++;
     $kolo = $_SESSION["pocetKol"];
+    if($kolo == 9){    
+    }
+
 } else {
     //sess neexistuje
     $_SESSION["pocetKol"] = 0;
     $kolo = $_SESSION["pocetKol"];
-    $_SESSION["row1col1"] = "";
-    $_SESSION["row1col2"] = "";
-    $_SESSION["row1col3"] = "";
+    $_SESSION["row1-col1"] = "";
+    $_SESSION["row1-col2"] = "";
+    $_SESSION["row1-col3"] = "";
 
-    $_SESSION["row2col1"] = "";
-    $_SESSION["row2col2"] = "";
-    $_SESSION["row2col3"] = "";
+    $_SESSION["row2-col1"] = "";
+    $_SESSION["row2-col2"] = "";
+    $_SESSION["row2-col3"] = "";
 
-    $_SESSION["row3col1"] = "";
-    $_SESSION["row3col2"] = "";
-    $_SESSION["row3col3"] = "";
-
-
+    $_SESSION["row3-col1"] = "";
+    $_SESSION["row3-col2"] = "";
+    $_SESSION["row3-col3"] = "";
 }
 
 echo "\$_GET <br>";
@@ -82,12 +83,17 @@ $znak2 = "O";
             echo "<tr>";
             for ($row = 1; $row < 4; $row++) {
                 echo "<td id='row$row-col$col'><a href=?row$row-col$col>";
-
-                if (array_key_exists("row$row-col$col", $_GET)) {
-                    if ($kolo % 2 == 0 || $kolo == 0) {
-                        echo $_SESSION["row$row-col$col"] = $znak1;
-                    } else {
-                        echo $_SESSION["row$row-col$col"] = $znak2;
+                if ($kolo % 2 == 0 || $kolo == 0) {
+                    if (array_key_exists("row$row-col$col",$_GET)){
+                        echo $_SESSION["row$row-col$col"]=$znak1;
+                    }else{
+                        echo $_SESSION["row$row-col$col"];
+                    }
+                }else{
+                    if (array_key_exists("row$row-col$col",$_GET)){
+                        echo $_SESSION["row$row-col$col"]=$znak2;
+                    }else{
+                        echo $_SESSION["row$row-col$col"];
                     }
                 }
                 echo "</a></td>";
@@ -96,7 +102,6 @@ $znak2 = "O";
         }
         ?>
     </table>
-
 </body>
 
 </html>

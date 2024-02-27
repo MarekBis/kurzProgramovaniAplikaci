@@ -91,4 +91,7 @@ CREATE TABLE zvire_chovatel (
     FOREIGN KEY (chovatel_rodne_cislo) REFERENCES chovatel(rodne_cislo)
 );
 show tables;
-desc zvire_chovatel;
+desc chovatel;
+--prejmenujeme email na kontaktni_email a zmenime daotvy typ na TEXT
+ALTER TABLE chovatel CHANGE COLUMN email kontaktni_email TEXT DEFAULT "neuvedeno";
+desc chovatel;
