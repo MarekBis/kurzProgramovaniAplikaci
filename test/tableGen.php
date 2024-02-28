@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 if (array_key_exists("pocetKol", $_SESSION)) {
     //existuje
     $_SESSION["pocetKol"]++;
@@ -26,6 +25,26 @@ if (array_key_exists("pocetKol", $_SESSION)) {
     $_SESSION["row3-col3"] = "";
 }
 
+$znak1 = "X";
+$znak2 = "O";
+if ($kolo % 2 == 0 || $kolo == 0){
+    $aktualniZnak=$znak1;
+}else{
+    $aktualniZnak=$znak2;
+}
+for ($col = 1; $col < 4; $col++) {
+    for ($row = 1; $row < 4; $row++) {        
+            if(array_key_exists("row$row-col$col",$_GET)){
+                $_SESSION["row$row-col$col"]=$aktualniZnak;
+                header("Location: ?");
+                $_SESSION["pocetKol"]--;
+            }else{
+                $_SESSION["row$row-col$col"];
+            }
+    }
+}
+
+
 echo "\$_GET <br>";
 var_dump($_GET);
 echo "\$_POST <br>";
@@ -35,8 +54,6 @@ var_dump($_SESSION);
 echo "\$_COOKIE <br>";
 var_dump($_COOKIE);
 
-$znak1 = "X";
-$znak2 = "O";
 
 ?>
 
@@ -73,6 +90,9 @@ $znak2 = "O";
         a:hover {
             background-color: rgba(0, 0, 0, 0.5);
         }
+        .unclickable { 
+        pointer-events: none; 
+        }  
     </style>
 </head>
 
@@ -82,21 +102,18 @@ $znak2 = "O";
         for ($col = 1; $col < 4; $col++) {
             echo "<tr>";
             for ($row = 1; $row < 4; $row++) {
-                echo "<td id='row$row-col$col'><a href=?row$row-col$col>";
-                if ($kolo % 2 == 0 || $kolo == 0) {
-                    if (array_key_exists("row$row-col$col",$_GET)){
-                        echo $_SESSION["row$row-col$col"]=$znak1;
-                    }else{
-                        echo $_SESSION["row$row-col$col"];
-                    }
-                }else{
-                    if (array_key_exists("row$row-col$col",$_GET)){
-                        echo $_SESSION["row$row-col$col"]=$znak2;
-                    }else{
-                        echo $_SESSION["row$row-col$col"];
-                    }
+                echo "<td id='row$row-col$col'>";
+                if ($_SESSION["row$row-col$col"] == ($znak1 || $znak2)){
+                    echo "<div class='unclickable'>";
                 }
-                echo "</a></td>";
+                echo "<a href=?row$row-col$col>";
+                echo $_SESSION["row$row-col$col"];
+                echo "</a>";
+                if ($_SESSION["row$row-col$col"] == ($znak1 || $znak2)){
+                    echo "</div>";
+                }
+                echo "</td>";
+                echo "</div>";
             }
             echo "</tr>";
         }
