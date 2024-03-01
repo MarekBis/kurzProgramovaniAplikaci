@@ -36,3 +36,27 @@ console.log(2 + +("5")); //7
 //NaN je hodnota, ktera rika, ze doslo ke spatne matematicke operaci
 //Not a Number
 console.log(2 * "velbloud");
+
+//tato metoda vraci boolean a zjsituje zda zadana hodnota je int
+console.log(Number.isInteger(5.5)); //false
+console.log(Number.isInteger(7)); //true
+console.log(Number.isInteger("7")); //false
+
+//Math
+
+//toto je vlastnost ktera ma v sobe ulozene cislo pi
+console.log(Math.PI); //3.141592653589793
+//funkce pro zaokrouhlovani
+console.log(Math.ceil(5.111111)); //6
+console.log(Math.floor(5.888888)); //5
+console.log(Math.round(5.888888)); //6
+console.log(Math.round(5.111111)); //5
+
+//Math.random() nam vygeneruje nahodne cislo od 0 az do 0.9999999999999999
+//muze padnou cista nula, nemuze nikdy padnout cista 1
+console.log(Math.random());
+console.log(Math.random() * 50); //0 az 49.999999999999
+console.log(Math.floor(Math.random() * 15)); // cela cisla 0 az 14
+//napiste prikaz ktery bude simulovat hraci kostku
+console.log("Kostka");
+console.log(Math.floor(Math.random()*10)+8);
