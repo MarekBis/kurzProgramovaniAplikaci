@@ -1,0 +1,10 @@
+//virtualni server pro windows
+https://www.apachefriends.org/download.html
+
+//virtualni server pro mac
+https://www.mamp.info/en/downloads/
+//studijni material
+https://kurz.primakurzy.cz/programator
+
+cesta ke složce XAMPP
+C:\xampp\htdocs
