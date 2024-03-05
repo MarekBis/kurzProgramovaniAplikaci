@@ -1,0 +1,255 @@
+//pozor, pro windows xampp, intalator potrebuje pomoci PHP umet zipvat soubory
+//zip je v xamppu defaultne vypnuty
+//v php.ini zkontrolujte zda mate odkomentovany tento radek
+//komentar v php ini je strednik na zacatku radku
+//rovnou odkomentujete i knohovnu gd, ktera umoznuje php upravoat obrazky
+extension=zip
+extension=gd
+
+//nejprve musime z composeru stahnout laraver balicek, ze ktere pak muzeme tvorit projekty
+//balicek si thaneme jako klasickou knihovnu s tim rozdilem, ze to nebude knihova ve slozce vendor, ale bude to knihovna, ktera se tahne do globalni uloziste vaseho pocitace
+
+# composer global require laravel/installer
+
+//nyni mame stazeny instalator, ted chceme vstoupit do slozky laravel-projekty a zalozit novy projekt
+//zmena slozky se dela pomoci prikazu cd
+//alternativne muzete otevrit terminal tim ze kliknete pravym tlacitkem na slozku laravel-projekty
+
+# cd laravel-projekty
+
+//uvnitr slozky laravel projekty nyni spuste prikaz ktery vam vytvori projekt
+
+# laravel new kotatka
+
+//pro macy
+//v macu prikaz laravel new kotakta vyhodi chybu, protoze macovsky terminal nema prava soustet nezname soubory (kvuli bezpecnosti), musime laravel/installer pridat na seznam overenych souboru
+// zde je kompletni navod: https://ralphjsmit.com/fix-laravel-command-not-found
+//1) zjsitit zda vas mac system poziva zsh nebo bash
+
+# echo $ZSH_VERSION
+# echo $BASH_VERSION
+
+//pokud mate zsh tak je to lepsi nez bash
+//nani musime poeditovat soubor ~/.zshrc
+//tento soubor vubec nemusi existovat, pokud jste nikdy jeste nepridavali neovere knihovny
+
+//tenot prikaz soubor vytvori (nic se neukaze, ale funguje)
+# touch ~/.zshrc
+
+//potom soubor otevreme
+# open -e ~/.zshrc
+
+//otevre se editor ado souboru vlozime tento radek
+PATH="$HOME/.composer/vendor/bin:$PATH"
+
+//zrestartovat VSC
+//macari nyni mohou zkusit # laravel new kotatka
+
+//----konec mac navodu jak zprvoznit laravel instalator
+
+//pote co se dokonci tvorba noveho projektu tak se muzeme podivat na jeji strukturu
+//projekt ma v sobe hodne souboru a slozek
+//nemusime znat vsechny, spousta veci tvori ten system laravel, ale nikdy je upravoat nebudeme
+
+//.env - toto je konfiguracni soubor, kde jsou uvedene prihalsovaci udaje do databaze, k emailovemu serveru a jine
+
+//resources - tato slozka budou slouzit jako uloziste komponentu a stranek, zde bude travit nejvice casu frontendak
+
+//public je slozka - kam frontendak dava css a js, v teto slozce je i soubor index.php, tento souboru index.php je vstupni brana do vasi webovky
+
+//frontendak pouziva jen slozku resources a public
+//vsechny ostani soubory a slozky patri backendu
+
+//routes - toto je slozka, kde backendak definuje URL a stranky, v souboru web.php je nastaveno jaka url patri jake strance
+
+//database - je slozka, kde jsou ulozene soubory, ktera vytvari databazi projektu, temto souborum, ktere tvori strukturu databaze se rika migrations
+
+//app - je slozka, kam se davaji controllery a modely, controller je sobuor, ktery se stara o logiku stranky a model je soubor ktery se stara o SQL prikazy do databaze
+
+//vendor je slozka composeru - idealne byste nemeli nikdy nic menit ve slozce vendor, tato slozka patri composeru a nechte composer rozhodnout sam co se tam upravi nebo prida
+
+//pojdme projekt spustit
+//ve vanilla php jsme spousteli soubory pres xampp/mamp
+//laravel ma vlastni virtualni server zabudovany primo v projektu
+//spusteni laravelovskeho serveru
+//1) otevrit terminal ve slozce kotatka
+# php artisan serve
+
+//2) prikaz serve spusti laravelovsky virtualni server
+//server bezi na teto adrese http://127.0.0.1:8000
+//adresa serveru se sklada z ip a portu
+
+//3) na adrese uvidite homepage vaseho laravel projektu
+//dokud terminal nezahodite, tak buse server aktivni, nechte ho bezet muzete ho skryt
+
+//soubory projektu uz neotevirejte skrze tlacitko open-in-browser
+//na projekt se vzdy divejte skrze adresu http://127.0.0.1:8000
+//pokud VSC vypnete, tak se tim vypne i terminal
+//pokazde kdyz zapnete VSC a budete chtit psusti laravle projekt, tak je potreba server znovu nastartovat
+# php artisan serve
+
+//nyni si vysvetlime jak funguji sablony (templates)
+//laravel pouziva sablonovaci system, kteremu se rika BLADE
+
+//vsechny sablony jsou ve slozce resources/views
+//vsehcny sablonovaci soubory maji koncovku blade.php
+
+//kdyz vytvorite novou sablonu, kterou chcete zobrazit uzivateli, tak ji musite pridelit i nejake URL
+//URL se sablonam prideluje v souboru routes/web.php
+
+//Route::get bere 2 parametry
+//1) na jakou url uzivatel vlezl
+//2) jakou sablonu mu vykreslit
+// pokud je v prvnim parametru "/", tak to znamena prvni stranka bez zadneho parametru
+
+//kazda stranka kterou chce zverejnit, tak musi mit routu
+//stranky a url ktere nemaji routu, tak automaticky vyhodi stranku 404
+
+//komentare se v blade sablone pistou takto
+{{-- toto je komentar --}}
+
+//promenne se do sablony posilaji skrze controller
+//na controllery je zatim moc brzo, budeme promenne posilat skrze routy
+//promenne se vypisuji pomoci {{}}, toto je jake echo
+//pokud chce aby se vam blade sablona spravne zabarvovala
+//tak musite nainstalovat rozsireni LARAVEL BLADE SNIPPETS (winnie lin)
+
+//tvorba odkazu v laravelu
+//pokud je vas projekt maly, tak muzete pouzivat klasicky odkat anchor a uvest do hrefu url ktere je uvedena v route
+//napr.: <a href="/napiste-nam">Prejit na kontakty</a>
+
+//url v prjektech se casto kvuli marketingovym ucelum meni
+//napr: marketak uz nechce url /napiste-nam, misto toho chce url /info
+//my jako backendaci bychom pak museli kazdou sablonu projet a zeditovat odkaz
+//lepsi zpusob je odkazovat pomoci indetifikatoru routy
+//kazde route dame nejake programatorske jmeno
+//metoda
+->name("nazevRouty")
+
+//pote co route date jmeno, tak se budete v blade sablone odkazovat pomoci
+{{route('nazevRouty')}}
+
+//tvorba souboru controller, chceme logiku prenest z routy pryc do controlleru
+//muzeme soubour vytvorit manualne nebo si ho nechame vygenerovat pomoci prikazu
+//vsehcny contorllery jsou ulozeny ve slozce app/Http/Controllers
+//vytovrime pro kazdou stranku vlastni controller
+# php artisan make:controller HomepageController
+# php artisan make:controller KontaktController
+
+//funkce ktere spoustime uvnitr routy, tak presuneme do contorlleru a dame ji jmeno index
+//v route pak musime rict ze funkci contorlleru volame
+//druhy aprametr routy uz nebude funkce, ale bude to pole
+//do prvni polozky pole napisete jaky controller se ma pouzit
+//do druhe polozky pole napiste jmeno funkce, ktera se ma pouzit
+//navic musete do souboru web.php nahoru pridat use, abyste nemuseli psat cela jmena namespacu
+//namspacy
+use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\KontaktController;
+//routy
+Route::get('/', [HomepageController::class, "index"])->name("homepageRoute");
+Route::get('/info', array(KontaktController::class, "index"))->name("kontaktRoute");
+
+//pokrocile blade veci
+//frontendak muze v bladu pouzivat zjednodusenou formu PHP
+//https://laravel.com/docs/10.x/blade#blade-directives
+//forntendatk muze obsah sveho html podminene menit
+//@isset, @if, @foreach, ...
+
+//databaze
+//databazi pripojime k projekut skrze soubor .env a /config/database.php
+//.env ma vzdy vetsi priority nez database.php
+//vyplnte do .env spravene udaje, macari musi prepsat port(8889) a pridat heslo (root)
+
+//migrace
+//migrace je soubor, ve kterem je nadeifnovano jak ma tabulka v DB vypadat (jmeno a atributy a datove typy)
+//v laravelu uz nepisete zadne SQL
+//v projektu budeme mit ulozene migrace, ktere slouzi jako navod jak databzi sestavit a zaroven slouzi jako historie toho jak se vase datbaze v prubehu vyvoje menila
+//migrace muzte vzit zpet, takze se zmena databaze vrati
+//!!!migrace se tykaji strukturuy databaze, ne obsahu databaze
+//migrace najdeme ve slozce /database/migrations
+//laravel uz nam pripravil 4 migrace, tak si je muzem zkusit namigrovat do DB
+# php artisan migrate
+
+//pokud databaze neexistuje, tak se laravel zepta zda ji ma vytvorit
+//napiseme yes a dame enter
+
+//migracni soubor ma v sobe 2 funkce
+//up je funkce ktera se spusti v momente kdyz udelame migraci
+//v up napriklad vytvorime tabulku
+//down je funkce ktera se spusti pokud migracni soubor vezmeme zpet
+//up a down maji v sobe protichudne prikazy
+//napr: kdyz v up pridam sloupecek tak v down ten sloupecek odeberu
+
+//migracni soubor se d avytvori pomoci prikazu make
+# php artisan make:migration vytvorit_tabulku_kote
+
+//uvnitr migracni souboru do funkce up dame funkci pro vytvoreni tabulky
+Schema::create('kote', function (Blueprint $table) {
+    //sem napiste seznam atributu
+});
+
+//nyni pridate atributy, laravel doporucuje pro kazdou tabulku zvlolit jako primarni klic id, int, unsigned, auto_increment
+$table->id(); //id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT
+
+//zde je odkaz kde se muzete podiva na to, jake vsechny veci muzete nastavit u atributu
+//datove typy
+https://laravel.com/docs/10.x/migrations#available-column-types
+//modifikatory datovych typu
+https://laravel.com/docs/10.x/migrations#column-modifiers
+
+//zapomenout vpylnit i funkci down
+
+//pak muzeme zkusit migraci provest
+# php artisan migrate
+
+//pokud si vcas uvedomite ze jste udeali chybu a vase tabulka v sobe jeste nema zadny data
+//znovu migraci provest nemuzeme, protoze system rika, ze soubor uz 1 namigrovany byl
+//tak upravime migracni soubor, pakr rekneme ze se ma posledni migrace vratit, a pak migrtaci provedeme znovu
+//toto vrati posledni migraci
+# php artisan migrate:rollback
+//pak muzeme udelat migraci znovu
+# php artisan migrate
+
+//existuje jeste jeden prikaz, ktery vrati svechny migrace a vsechno namigruje znovu
+# php artisan migrate:refresh
+
+//pokud uz v tabulce data jsou
+//tak nemsite nikdy udelat refresh ani rollback, jinak prijdte o vsechna data v tabulce
+//pokud chcte udelat nejake zmeny v tabulce napr.: pridat dalsi sloupecek
+//tak vytvorte novy migracni soubor
+# php artisan make:migration pridani_sloupecku_barva_kote
+
+//pokud editujeme uz existujici tabulku
+//tak do funkce up misto Schema::create pouzijme Schema::table
+Schema::table("kote", function (Blueprint $table) {
+    //zde pridame nove sloupecky
+    $table->string('barva');
+});
+
+//nazapomente na funkci down
+Schema::table('kote', function (Blueprint $table) {
+    //zde odstranime sloupecky
+    $table->dropColumn('barva');
+});
+
+//pak muzeme udelat dalsi migraci
+
+//pozn.: pokud chcete rollbacknout konkretni migraci tak musite uvest jeji cestu v parametru PATH
+# php artisan migrate:rollback --path=/database/migrations/timestamp_filename.php
+
+//nyni kdyz uz tabulka kote existuje, tam musime teto tabulce kote vytvroit soubor model
+//bez souboru model, nemuze nikdo tuto tabulku kote pouzivat
+//soubory model jsou ve slozce /app/Models/
+//souzbur muzeme vytvorit manualne nebo skrze prikaz
+# php artisan make:model Kote
+
+//do modelu musite uvest 2 veci
+//nazev tabulky kam model patri
+//primarni klic tabulky
+//dodrzte nazvy promennych, toto je povinne
+protected $table = "kote";
+protected $primaryKey = "id";
+
+//nyni kdyz uz tabulku muuzme pouzivat, tak si ukazeme seedovani
+//seedovani je proces pri ktrem si do databaze vlozime testovaci data
+//na tomto seedovnai si ukazeme jak do tabaulky kote vlozit nove zaznamy
