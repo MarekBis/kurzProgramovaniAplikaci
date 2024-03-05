@@ -251,5 +251,31 @@ protected $table = "kote";
 protected $primaryKey = "id";
 
 //nyni kdyz uz tabulku muuzme pouzivat, tak si ukazeme seedovani
-//seedovani je proces pri ktrem si do databaze vlozime testovaci data
+//seedovani je proces pri, ktrem si do databaze vlozime testovaci data
+//nemusi to byt testovaci mohou to byt i nejake hodnoty ktere chcete mit v databazi jako vychozi zaznamy
 //na tomto seedovnai si ukazeme jak do tabaulky kote vlozit nove zaznamy
+//seeder je zas nejaky soubor podobny migraci
+//muzeme ho tedy vytvorit pres prikaz make
+//seedery se vytvori do slouzky /database/seeders
+# php artisan make:seeder KoteSeeder
+
+//hodnoty ktere chceme vlozit pri spusteni seedur musime dat do funkce run
+//pro vkladani nebo updatovani zaznamu v db musime pouzit model
+//nahore v souboru musiem nejprve napsat use namespace modelu
+use App\Models\Kote;
+
+//potom vytvorime insatnci modelu kote
+$modelKote = new Kote;
+
+//potom teto insatnci nastavime hodnoty do vlastnosti
+$modelKote->jmeno = "Ikiru-san";
+$modelKote->pohlavi = "samec";
+$modelKote->vek = 2;
+
+//na zaver zavolame metodu save()
+//tato metoda se sama rozhodne zda udela INSERT INTO nebo UPDATE
+$modelKote->save();
+
+//do naseho seederu jsme si vlozili 3 nova kotatka
+//nyni seeder spustime
+# php artisan db:seed --class=KoteSeeder
