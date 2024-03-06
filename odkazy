@@ -1,0 +1,69 @@
+//virtualni server pro windows
+https://www.apachefriends.org/download.html
+
+//virtualni server pro mac
+https://www.mamp.info/en/downloads/
+
+//studijni material
+https://kurz.primakurzy.cz/programator
+
+//cesta ke slozce htdocs pro XAMPP
+C:\xampp\htdocs
+
+//cesta ke slozce pro MAMP
+~/Applications/MAMP/htdocs
+
+//link na Tonduv google disk
+https://drive.google.com/drive/folders/1_dEKhuAeSUX8OAiGYR1ASrHr8jCtl7Pw?usp=drive_link
+
+//email na Tondu
+tonda.truong@primakurzy.cz
+
+//zde je video, ktere ukazuje, jak aktivovat v XAMPPu a MAMPu xdebug
+https://www.primakurzyonline.cz/kurz-programator?playlistNodeId=9034
+
+//pro windows
+https://getcomposer.org/
+
+//pro mac
+//nainstalovat homebrew
+https://brew.sh/
+//a pak spustit prikaz
+brew install composer
+
+//na teto strance najdete vsechny knihovny, ktere ma composer k dispozici
+https://packagist.org/
+
+//pro javascriptove knihovny se misto composeru pouziva NPM
+https://nodejs.org/en/download/
+
+//zde najdete vsechny knihovny pro NPM
+https://www.npmjs.com/
+
+//export databaze primakurzy
+https://drive.google.com/file/d/1LrDEQTZB93Bze5UoM61A-8CSzxc2-_bP/view?usp=drive_link
+
+//export databaze pocasi
+https://drive.google.com/file/d/1CPZ-v40vwaxgaCOY_2_JAJFEAVjk7Tn5/view?usp=drive_link
+
+//seznam JS udalosti
+https://www.w3schools.com/jsref/dom_obj_event.asp
+
+//toto je video kurz na laravel
+https://www.youtube.com/watch?v=MFh0Fd7BsjE&
+
+//odkaz na recenze
+//moznost prodlouzit videa o 6 mesicu
+https://www.primakurzy.cz/kurz-programovani/#facebook
+
+//toto je vidoe kurz na vue
+https://www.youtube.com/watch?v=I_xLMmNeLDY
+
+//video na tailwind
+https://www.youtube.com/watch?v=1IPYrKNoAOc&list=PLQ8x_VWW6AkvEw-pu4KNe0idPv2iPqsMm
+
+//David Setek video kurzy
+https://www.youtube.com/@hacknisvoubudoucnost/featured
+
+//video na git a gitHub
+https://mega.nz/file/zlgBkYRD#Gj5oQXVt1yyLIpTZSa89snjWjlcjQO1oBzUUumEH4CA
