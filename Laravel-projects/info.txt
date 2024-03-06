@@ -279,3 +279,39 @@ $modelKote->save();
 //do naseho seederu jsme si vlozili 3 nova kotatka
 //nyni seeder spustime
 # php artisan db:seed --class=KoteSeeder
+
+//controlles bude tedy pouzivat model k tomu aby ziskal nejaka data z DB
+//musime zase uvest use na zacatek souboru kde bude namespace modelu, ktery chceme pouzit
+//pokud chceme vytahnou z tbaulky vsehcny zaznamy tak pouzije statickou funkci all()
+//tato funkce vam vrati pole objektu (stejne jako ve vanilla PHP)
+Kote::all();
+
+//misto vsech zaznamu muzeme pouzit podminku where
+//where prijima 2 parametry (nazev sloupecku, hledana hodnota)
+Kote::where("barva", "cerna");
+
+//muzeme pouzit i nejaky porovnavaci operator
+//funkce where muze tedy prijimat 3 parametry
+Kote::where("vek", ">=", 2);
+
+//zmodelu muzeme take najit konkretni zaznam podle primarniho klice
+//takto najdeme jedno kote s primarnim klicem 2
+//toto nevraci toto vraci objekt
+Kote::find(2);
+
+//formulare
+//v laravelu vytvorime sablonu pro formular
+//do sablony napiseme html strukturu formulare
+//v laravelu nemusi nas submit mit name
+//formular ale musi mit vyplneny action
+//<form action="/pridat-kote" method="post">
+//kazdy formular musi v sobe mit directivum @csrf
+//toto directivum chrani nas formular proti utoku typu CROSS SITE REQUEST FORGERY
+//uvnitr routy musime specifikovat jaka routa zobrazi formular a jaka routa zpracuje formular
+//routa ktera zpracuje formular ma stejnou url jako action formulare
+//routa zavola funkci controlleru, tato funkce bude formular zpracovavat
+//funkce prijima argument typu Request a vraci redirect
+//function zpracujFormular (Request $request): RedirectResponse
+//v argumentu $request najmede nase formularova data, $request je objekt
+//vytvorime novy model Kote dosaime hodnoty do vlasnosti apak pouzijeme metodu save()
+//po dokonceni formulare 

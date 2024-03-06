@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\KontaktController;
+use App\Http\Controllers\KoteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[HomepageController::class,'index'])->name("homepageRoute");
 
-
 Route::get('/info',array(KontaktController::class,'index'))->name("kontaktRoute");
 
+Route::get('/formular',array(KoteController::class,'index'))->name("formularRoute");
+
+
+Route::post("/pridat-kote",array(KoteController::class,"zpracujFormular"));

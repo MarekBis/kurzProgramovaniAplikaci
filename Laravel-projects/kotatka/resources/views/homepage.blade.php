@@ -30,10 +30,30 @@
 
     {{-- frontendak od nas dostal pole jmen, achce je vypsat do ul seznamu --}}
     <ul>
-        @foreach ($jmenaKotatek as $kotatko)
-            <li>{{$kotatko}}</li>
+        @foreach ($casyKrmeni as $cas)
+            <li>{{$cas}}</li>
         @endforeach
     </ul>
+    {{-- //tabulka --}}
+    <table border="solid 1px">
+        <tr>
+            <th>Jmeno</th>
+            <th>Vek</th>
+            <th>Barva</th>
+        </tr>
+        @foreach ($poleKotatek as $kote)
+        <tr>
+            <td>{{$kote->jmeno}}</td>
+            <td>{{$kote->vek}}</td>
+            <td>{{$kote->barva}}</td>
+        </tr>
+            
+        @endforeach
+    </table>
+    <h3>Kote mesice</h3>
+    <p>Nejhodnejsi kote: {{$koteMesice->jmeno}}</p>
+
+    <a href="{{route('formularRoute')}}">formular</a>
 
 
     {{-- frontendak  muze v sablone blade pouzivat zjednodusenou sytanxi php --}}
