@@ -305,13 +305,52 @@ Kote::find(2);
 //v laravelu nemusi nas submit mit name
 //formular ale musi mit vyplneny action
 //<form action="/pridat-kote" method="post">
+
 //kazdy formular musi v sobe mit directivum @csrf
 //toto directivum chrani nas formular proti utoku typu CROSS SITE REQUEST FORGERY
+
 //uvnitr routy musime specifikovat jaka routa zobrazi formular a jaka routa zpracuje formular
 //routa ktera zpracuje formular ma stejnou url jako action formulare
 //routa zavola funkci controlleru, tato funkce bude formular zpracovavat
+
 //funkce prijima argument typu Request a vraci redirect
 //function zpracujFormular (Request $request): RedirectResponse
+
 //v argumentu $request najmede nase formularova data, $request je objekt
 //vytvorime novy model Kote dosaime hodnoty do vlasnosti apak pouzijeme metodu save()
-//po dokonceni formulare 
+
+//po dokonceni formulare uzivatele presmerujeme zpet na homepage
+//return redirect('/');
+
+//parametrizovane url
+//mame pro kazde kote vlastni url ktera bude ve tvaru
+//url se sklada ze slova kote a ciselneho id napr.: "/kote/1" nebo "/kote/5"
+//do routy ciselny parametr uvedem do {}
+// "/kote/{id}"
+
+//v contorlleru musite mit funkci s argumentem, ktery se rovna parametru, ktery mate uvedeny v route
+// function detail ($id) {}
+
+//backendak muze pouzit dd(); aby si vypsal hodnotu nejake promenne
+//laravel vyhocdi chybu pokud uzivatel vleze na url s id kocky, ktera v databazi neni
+// "/kote/80" neexistuje, ale nevyhodi nam to 404, vyhodi to chybu
+// pokud ::find() nenajde zadny zaznam v DB, tak se vrati hodnota null
+// pokud tedy zjsitime ze objekt je null, tak celou funkci ukoncime a zobrazime uzivtaeli stranku 404
+// abort(404);
+
+//vlastni chybova sablona 404
+//pokud chceme mit vlastni chybovou stranku pro 404, tak musime ve slozce views vytvorit slozku errors a do te slozky vytvorit soubor 404.blade.php
+// \resources\views\errors\404.blade.php
+
+//parametrizovane URL mohou mit taky name
+//route dame jmeno a pak v sablone pouzime do hrefu funkci route, ktera bude proijimat 2 parametry
+//1) nazev routy
+//2) pole parametru URL
+{{route('detailKoteRoute', array('id' => $kote->id))}}
+
+//pripojovani CSS a JS a obrazku
+//musite je mit ve slozce public
+do sablony se tyto veci pripojuji skrze funkci asset
+<link rel="stylesheet" href="{{asset('./css/style.css')}}">
+<script src="{{asset('./js/main.js')}}"></script>
+<img src="{{asset('./img/kote.jpg')}}" alt="kote"/>

@@ -22,4 +22,16 @@ class KoteController extends Controller
         $noveKote->save();
         return redirect('/');
     }
+    function detail ($id) {
+        $polePromennych = array();
+
+        $objektKote = Kote::find($id);
+        $polePromennych["kote"] = $objektKote;
+
+        if ($objektKote == null){
+            abort(404);
+        }
+
+        return view("detailKotatka", $polePromennych);
+    }
 }

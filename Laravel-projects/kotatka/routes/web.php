@@ -24,3 +24,5 @@ Route::get('/formular',array(KoteController::class,'index'))->name("formularRout
 
 
 Route::post("/pridat-kote",array(KoteController::class,"zpracujFormular"));
+
+Route::get("/kote/{id}", array(KoteController::class, "detail"));
