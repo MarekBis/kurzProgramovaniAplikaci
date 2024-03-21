@@ -1,2 +1,0 @@
-composer require tinymce/tinymce 5.10.9
-composer require primakurzy/responsivefilemanager
